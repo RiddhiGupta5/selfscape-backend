@@ -19,6 +19,7 @@ router.post("/", checkAuth, (req, res, next) => {
       return res.status(201).json({
         message: "Interest added successfully",
         interest: {
+          _id: result._id,
           interestName: result.interestName,
           description: result.description,
           category: result.category,
@@ -111,7 +112,7 @@ router.get("/:category", checkAuth, (req, res, next) => {
 });
 
 router.delete("/:interestId", checkAuth, (req, res, next) => {
-  Interest.remove({ _id: req.params.interestId })
+  Interest.remove({ _id: req.params.interestId, user: req.userData.userId })
     .exec()
     .then((result) => {
       res.status(200).json({ message: "Interest Deleted" });
@@ -131,7 +132,10 @@ router.patch("/:interestId", checkAuth, (req, res, next) => {
     if (field.key != "interestName") updateFields[field.key] = field.value;
   }
   console.log(updateFields);
-  Interest.update({ _id: id }, { $set: updateFields })
+  Interest.update(
+    { _id: id, user: req.userData.userId },
+    { $set: updateFields }
+  )
     .exec()
     .then((result) => {
       res.status(200).json({

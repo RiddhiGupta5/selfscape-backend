@@ -7,6 +7,7 @@ const app = express();
 
 const userRoutes = require("./api/routes/userRoutes");
 const interestRoutes = require("./api/routes/interestRoutes");
+const diaryRoutes = require("./api/routes/diaryRoutes");
 
 mongoose.connect(
   "mongodb+srv://RiddhiGupta5:" +
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
 
 app.use("/user", userRoutes);
 app.use("/interest", interestRoutes);
+app.use("/diary", diaryRoutes);
 
 app.get("/ping", (req, res, next) => {
   return res.status(200).json({ message: "OK" });
