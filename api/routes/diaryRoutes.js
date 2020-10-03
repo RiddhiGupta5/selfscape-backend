@@ -91,19 +91,19 @@ router.get("/chartData", checkAuth, (req, res, next) => {
       var moodData = Array(360).fill(0);
       var resultData = [];
       var index, diary;
+      let average = (array) => array.reduce((a, b) => a + b) / array.length;
       for (i in result) {
         diary = result[i];
         index = diary.created_at.getDate() + diary.created_at.getMonth() * 30;
         moodData[index] = diary.mood;
-        resultData.push({
-          x: index,
-          y: diary.mood,
-        });
+      }
+      for (var i = 0; i < 12; i++) {
+        resultData.push(average(moodData.slice(i * 30, (i + 1) * 30)));
       }
       return res.status(200).json({
         message: "Found data",
-        dataCoordinates: resultData,
-        dataList: moodData,
+        data: resultData,
+        alldata: moodData,
       });
     });
 });
