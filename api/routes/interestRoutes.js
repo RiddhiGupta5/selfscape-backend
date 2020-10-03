@@ -162,4 +162,78 @@ router.patch("/:interestId", checkAuth, (req, res, next) => {
     });
 });
 
+router.get("/bot", checkAuth, (req, res, next) => {
+  const message = req.query.message.toLowerCase().replace("+", " ");
+  var category,
+    respMessage = null;
+  if (
+    message.includes("sad") ||
+    message.includes("gloomy") ||
+    message.includes("1")
+  ) {
+    category = "Leisure";
+  } else if (
+    message.includes("fine") ||
+    message.includes("good") ||
+    message.includes("neutral") ||
+    message.includes("2")
+  ) {
+    category = "Productive";
+  } else if (
+    message.includes("happy") ||
+    message.includes("excited") ||
+    message.includes("3")
+  ) {
+    category = "Learning";
+  } else if (message.includes("hello") || message.includes("hi")) {
+    respMessage =
+      "Hello " +
+      req.userData.username +
+      "! How is your mood today ? <br/> 1. Sad / Gloomy <br/> 2. Fine / Neutral <br/> 3. Happy / Excited";
+  } else if (message.includes("your name") && message.includes("?")) {
+    respMessage =
+      "Hello I am selfscape! How is your mood today ? <br/> 1. Sad / Gloomy <br/> 2. Fine / Neutral <br/> 3. Happy / Excited";
+  } else if (message.includes("made you") && message.includes("?")) {
+    respMessage = "Manorama, Riddhi and Saloni made me";
+  } else if (message.includes("do you do") && message.includes("?")) {
+    respMessage =
+      "I am an interactive assistant to help you find suitable activity that you can do today :)";
+  } else if (message.includes("thank")) {
+    respMessage = "You are welcome! I am happy to help you :P";
+  } else if (
+    message.includes("don't want") ||
+    message.includes("not do") ||
+    message.includes("no")
+  ) {
+    respMessage =
+      "Oh! No problem :) <br/> I will be happy to suggest you some other activity <br/> What is your mood ? <br/> 1. Sad / Gloomy <br/> 2. Fine / Neutral <br/> 3. Happy / Excited";
+  } else {
+    respMessage = "Sorry! I did not get you :(";
+  }
+  if (respMessage != null) {
+    return res.status(200).json({
+      message: respMessage,
+    });
+  } else {
+    Interest.find({
+      user: req.userData.userId,
+      category: category,
+    })
+      .exec()
+      .then((result) => {
+        var index = Math.floor(Math.random() * result.length);
+        var activityName = result[index].interestName;
+        respMessage =
+          "Hey " +
+          req.userData.username +
+          ", why don't you try " +
+          activityName +
+          " today :)";
+        return res.status(200).json({
+          message: respMessage,
+        });
+      });
+  }
+});
+
 module.exports = router;
