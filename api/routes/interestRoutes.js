@@ -195,7 +195,12 @@ router.get("/bot", checkAuth, (req, res, next) => {
       "Hello I am selfscape! How is your mood today ? <br/> 1. Sad / Gloomy <br/> 2. Fine / Neutral <br/> 3. Happy / Excited";
   } else if (message.includes("made you") && message.includes("?")) {
     respMessage = "Manorama, Riddhi and Saloni made me";
-  } else if (message.includes("do you do") && message.includes("?")) {
+  } else if (
+    (message.includes("do you do") ||
+      message.includes("you are") ||
+      message.includes("are you")) &&
+    message.includes("?")
+  ) {
     respMessage =
       "I am an interactive assistant to help you find suitable activity that you can do today :)";
   } else if (message.includes("thank")) {
