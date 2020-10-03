@@ -5,7 +5,6 @@ const diarySchema = mongoose.Schema(
     _id: mongoose.Schema.Types.ObjectId,
     mood: { type: Number, required: true },
     diaryBody: { type: String },
-    shortDescription: { type: String, require: true },
     isFavorite: { type: Boolean, default: false },
     user: {
       type: mongoose.Schema.Types.ObjectId,

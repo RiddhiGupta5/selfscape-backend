@@ -52,6 +52,37 @@ router.get("/", checkAuth, (req, res, next) => {
     });
 });
 
+router.get("/checkStatus", checkAuth, (req, res, next) => {
+  Interest.find({ user: req.userData.userId })
+    .exec()
+    .then((result) => {
+      var hasLeisure = result.some(
+        (interest) => interest.category == "Leisure"
+      );
+      var hasProductive = result.some(
+        (interest) => interest.category == "Productive"
+      );
+      var hasLearning = result.some(
+        (interest) => interest.category == "Learning"
+      );
+      if (hasLeisure && hasProductive && hasLearning) {
+        return res.status(200).json({
+          message: "User has added all required interests",
+        });
+      } else {
+        console.log(hasLeisure);
+        console.log(hasProductive);
+        console.log(hasLearning);
+        return res.status(400).json({
+          message: "Some required interests are missing",
+          hasLeisure: hasLeisure,
+          hasLearning: hasLearning,
+          hasProductive: hasProductive,
+        });
+      }
+    });
+});
+
 router.get("/filter", checkAuth, (req, res, next) => {
   const id = req.query.interestId;
   const category = req.query.category;
@@ -89,26 +120,6 @@ router.get("/filter", checkAuth, (req, res, next) => {
         });
       });
   }
-});
-
-router.get("/:category", checkAuth, (req, res, next) => {
-  Interest.find({
-    user: req.userData.userId,
-    category: req.params.category,
-  })
-    .exec()
-    .then((result) => {
-      return res.status(200).json({
-        message: "Found interests",
-        interest: result,
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        message: "Failed to find interests",
-        error: err,
-      });
-    });
 });
 
 router.delete("/:interestId", checkAuth, (req, res, next) => {
