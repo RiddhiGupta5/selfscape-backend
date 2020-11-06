@@ -8,7 +8,7 @@ During these trying times, often we neglect our well-being and state of mind due
 
 Through this, we can monitor mood swings and unexpected behavioural changes by maintaining a log of our emotions on a daily basis and judge the pattern that occurs over a particular time period. This would enable us to take appropriate actions to keep our moods elated at all times while making the most of the time at home and getting a break from the monotonous schedule.
 
-## How do we exactly work?
+## How does it exactly work?
 
 1. Create an account by signing up at Selfscape.
 2. Add your own interests, hobbies and routine commitments, category-wise under Leisure, Learning or Productivity.
@@ -47,18 +47,19 @@ Base Url: https://selfscape.herokuapp.com/
 
 ## Selfscape Home Page - Screenshot
 
-![Selfscape Home Page](https://raw.githubusercontent.com/saloni0104/Selfscape-mood_analyst/master/images/Homepage.PNG?token=AL6DCECORVZY2BUDWB47H727UTMJ6)
+![Selfscape Home Page](https://github.com/saloni0104/Selfscape-mood_analyst/blob/master/images/Homepage.PNG?raw=true)
 
 
 ## Contributors
 
 <table>
   <tr>
-    <td align="center"><a href="http://github.com/saloni0104"><img src="https://raw.githubusercontent.com/saloni0104/Selfscape-mood_analyst/master/images/Saloni.PNG?token=AL6DCECYSDUMA2QOYC4VAXS7UTN2I" width="200px;"  height="200px;" alt=""/><br /><sub><b>Saloni Parekh 📖</b></sub></a><br />
+    <td align="center"><a href="http://github.com/saloni0104"><img src="https://github.com/saloni0104/Selfscape-mood_analyst/blob/master/images/Saloni.PNG?raw=true" width="200px;"  height="200px;" alt=""/><br /><sub><b>Saloni Parekh</b></sub></a><br /><a href="#blogger" title="blogs">📖</a>
    </td>
-    <td align="center"><a href="http://github.com/RiddhiGupta5"><img src="https://raw.githubusercontent.com/saloni0104/Selfscape-mood_analyst/master/images/Riddhi.PNG?token=AL6DCEEDFGQJFNGCXF34MQC7UTN5I" width="200px;" height="200px;" alt=""/><br /><sub><b>Riddhi Gupta 💻</b></sub></a><br />
    </td>
-    <td align="center"><a href="http://github.com/Manorama09"><img src="https://raw.githubusercontent.com/saloni0104/Selfscape-mood_analyst/master/images/Manorama.jpeg?token=AL6DCEB4RHDETBHIYBXDH627UTN36" width="200px;" height="200px;" alt=""/><br /><sub><b>Manorama Maharana 🎨</b></sub></a><br/>
+    <td align="center"><a href="http://github.com/RiddhiGupta5"><img src="https://github.com/saloni0104/Selfscape-mood_analyst/blob/master/images/Riddhi.PNG?raw=true" width="200px;" height="200px;" alt=""/><br /><sub><b>Riddhi Gupta</b></sub></a><br /><a href="#coder" title="tech-enthu">💻</a>
+   </td>
+    <td align="center"><a href="http://github.com/Manorama09"><img src="https://github.com/saloni0104/Selfscape-mood_analyst/blob/master/images/Manorama.jpeg?raw=true" width="200px;" height="200px;" alt=""/><br /><sub><b>Manorama Maharana</b></sub></a><br/><a href="#artist" title="art">🎨</a>
     </td>
 </tr>
 </table>
@@ -67,5 +68,6 @@ Base Url: https://selfscape.herokuapp.com/
 <p align="center">
 	Made with :heart:
 </p>
+
 
 
